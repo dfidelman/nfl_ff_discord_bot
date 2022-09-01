@@ -5,11 +5,11 @@ const { Routes } = require('discord.js');
 const { clientId, guildId, token } = require('./config.json');
 
 const commands = [];
-const commandsPath = path.join(_dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const slashCommandsPath = path.join(__dirname, 'slash_commands');
+const commandFiles = fs.readdirSync(slashCommandsPath).filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
+	const filePath = path.join(slashCommandsPath, file);
 	const command = require(filePath);
 	commands.push(command.data.toJSON());
 }
